@@ -68,4 +68,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="mainMenuBckgr/VBoxContainer/startBtn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="mainMenuBckgr/VBoxContainer/settingsBtn" to="." method="_on_settings_btn_pressed"]
 [connection signal="pressed" from="mainMenuBckgr/VBoxContainer/quitBtn" to="." method="_on_quit_btn_pressed"]

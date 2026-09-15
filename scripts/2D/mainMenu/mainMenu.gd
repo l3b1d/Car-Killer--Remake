@@ -19,3 +19,17 @@ func _startBtnReady() -> void:
 
 func _on_start_btn_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/3D/baseGame.tscn")
+
+## For Start Button
+
+## For Settings Button
+
+@onready var settings_btn: Button = $mainMenuBckgr/VBoxContainer/settingsBtn
+
+func _settingsBtnReady() -> void:
+	settings_btn.pressed.connect(_on_settings_btn_pressed)
+
+func _on_settings_btn_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/2D/settings.tscn")
+
+## For Settings Button
