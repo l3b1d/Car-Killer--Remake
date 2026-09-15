@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://blajm8kmyk8tt"
-path="res://.godot/imported/carkiller_menu_back.jpg-39927a1d12d5174486df0f2ce28c2ebb.ctex"
+path="res://.godot/imported/carkiller_menu_back.jpg-0e80845bedd19b80513475c11a17aab5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://textures/ui/main_menu/carkiller_menu_back.jpg"
-dest_files=["res://.godot/imported/carkiller_menu_back.jpg-39927a1d12d5174486df0f2ce28c2ebb.ctex"]
+source_file="res://textures/UI/main_menu/carkiller_menu_back.jpg"
+dest_files=["res://.godot/imported/carkiller_menu_back.jpg-0e80845bedd19b80513475c11a17aab5.ctex"]
 
 [params]
 
