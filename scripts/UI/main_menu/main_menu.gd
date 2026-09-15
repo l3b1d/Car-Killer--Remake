@@ -4,6 +4,7 @@ func _on_quit_btn_pressed() -> void:
 	get_tree().quit()
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$main_menu_back/buttons_container/start_btn.text = tr("Start")
 	$main_menu_back/buttons_container/settings_btn.text = tr("Settings")
 	$main_menu_back/buttons_container/quit_btn.text = tr("Quit")

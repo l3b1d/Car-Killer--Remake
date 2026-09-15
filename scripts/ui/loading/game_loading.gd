@@ -10,6 +10,7 @@ var game_scene: PackedScene
 var loading_failed := false
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TitleLabel.text = tr("CAR KILLER: REMASTERED")
 	start_button.text = tr("Start game")
 	start_button.disabled = true

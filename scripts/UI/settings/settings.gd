@@ -5,6 +5,7 @@ extends Node2D
 @onready var save_button: Button = $settingsBckgr/san_btn
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	display_mode_option.clear()
 	display_mode_option.add_item(tr("Windowed"), 0)
 	display_mode_option.add_item(tr("Fullscreen"), 1)
