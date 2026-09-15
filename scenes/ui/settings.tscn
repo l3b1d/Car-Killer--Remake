@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://t8g5fjk5odln"]
 
-[ext_resource type="Script" uid="uid://cfshqgnddok6f" path="res://scripts/UI/settings/settings.gd" id="1_32w1k"]
-[ext_resource type="Texture2D" uid="uid://cjfwkh7lwlef" path="res://textures/UI/settings/carkiller_settings_back.jpg" id="1_t8pki"]
+[ext_resource type="Script" uid="uid://batg6kxg30whk" path="res://scripts/ui/settings/settings.gd" id="1_32w1k"]
+[ext_resource type="Texture2D" uid="uid://bdju5xdi8xy8k" path="res://textures/ui/settings/carkiller_settings_back.jpg" id="1_t8pki"]
 
 [node name="Settings" type="Node2D" unique_id=745495584]
 script = ExtResource("1_32w1k")
