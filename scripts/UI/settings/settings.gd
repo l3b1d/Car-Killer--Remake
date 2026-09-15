@@ -1,14 +1,13 @@
 extends Node2D
 
-#Save and Exit Button. W.I.P
+@onready var fullscreen_toggle: CheckButton = $settingsBckgr/fullscreen_toggle
 
-@onready var san_btn: Button = $settingsBckgr/san_btn
+func _ready() -> void:
+	fullscreen_toggle.button_pressed = SettingsManager.fullscreen
 
-func _san_btn_ready() -> void:
-	san_btn.pressed.connect(_on_san_btn_pressed)
+func _on_fullscreen_toggle_toggled(toggled_on: bool) -> void:
+	SettingsManager.set_fullscreen(toggled_on)
 
 func _on_san_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/UI/main_menu.tscn")
-
-
-#Save and Exit Button. W.I.P
+	SettingsManager.save_settings(fullscreen_toggle.button_pressed)
+	get_tree().change_scene_to_file("res://scenes/ui/main_menu/main_menu.tscn")

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dd07dfp6gt3dq"]
 
-[ext_resource type="Script" uid="uid://ci8kr1n110yju" path="res://scripts/UI/main_menu/main_menu.gd" id="1_5jstl"]
-[ext_resource type="Shader" uid="uid://blqmd4ocv4gom" path="res://scenes/UI/shaders/main_menu_bckgr.gdshader" id="2_tfcbk"]
-[ext_resource type="Texture2D" uid="uid://cmurkcnrlqv58" path="res://textures/UI/main_menu/carkiller_menu_back.jpg" id="3_e2p27"]
+[ext_resource type="Script" uid="uid://ci8kr1n110yju" path="res://scripts/ui/main_menu/main_menu.gd" id="1_5jstl"]
+[ext_resource type="Shader" uid="uid://blqmd4ocv4gom" path="res://scenes/ui/main_menu/main_menu_background.gdshader" id="2_tfcbk"]
+[ext_resource type="Texture2D" uid="uid://cmurkcnrlqv58" path="res://textures/ui/main_menu/carkiller_menu_back.jpg" id="3_e2p27"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_atfge"]
 shader = ExtResource("2_tfcbk")

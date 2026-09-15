@@ -17,6 +17,10 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=60
 config/icon="res://textures/icon.svg"
 
+[autoload]
+
+SettingsManager="*res://scripts/ui/settings/settings_manager.gd"
+
 [display]
 
 window/size/viewport_width=1920

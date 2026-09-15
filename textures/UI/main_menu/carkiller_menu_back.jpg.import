@@ -10,7 +10,7 @@ metadata={
 
 [deps]
 
-source_file="res://textures/UI/main_menu/carkiller_menu_back.jpg"
+source_file="res://textures/ui/main_menu/carkiller_menu_back.jpg"
 dest_files=["res://.godot/imported/carkiller_menu_back.jpg-0e80845bedd19b80513475c11a17aab5.ctex"]
 
 [params]
