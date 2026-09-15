@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://3mi5ymh16f6k"]
+
+[ext_resource type="Script" uid="uid://batg6kxg30whk" path="res://scripts/ui/settings/settings.gd" id="1_32w1k"]
+[ext_resource type="Texture2D" uid="uid://bdju5xdi8xy8k" path="res://textures/ui/settings/carkiller_settings_back.jpg" id="1_t8pki"]
+
+[node name="Settings" type="Node2D" unique_id=745495584]
+script = ExtResource("1_32w1k")
+
+[node name="settingsBckgr" type="TextureRect" parent="." unique_id=421682726]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_t8pki")
+
+[node name="display_label" type="Label" parent="settingsBckgr"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 280.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 28
+text = "Display mode"
+
+[node name="display_mode_option" type="OptionButton" parent="settingsBckgr"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 45.0
+offset_right = 610.0
+offset_bottom = 95.0
+theme_override_font_sizes/font_size = 24
+
+[node name="language_label" type="Label" parent="settingsBckgr"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 125.0
+offset_right = 280.0
+offset_bottom = 163.0
+theme_override_font_sizes/font_size = 28
+text = "Language"
+
+[node name="language_option" type="OptionButton" parent="settingsBckgr"]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 120.0
+offset_right = 610.0
+offset_bottom = 170.0
+theme_override_font_sizes/font_size = 24
+
+[node name="san_btn" type="Button" parent="settingsBckgr" unique_id=662092578]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -80.0
+offset_right = 227.0
+offset_bottom = -27.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Save & Exit"
+
+[connection signal="item_selected" from="settingsBckgr/display_mode_option" to="." method="_on_display_mode_option_item_selected"]
+[connection signal="item_selected" from="settingsBckgr/language_option" to="." method="_on_language_option_item_selected"]
+[connection signal="pressed" from="settingsBckgr/san_btn" to="." method="_on_san_btn_pressed"]

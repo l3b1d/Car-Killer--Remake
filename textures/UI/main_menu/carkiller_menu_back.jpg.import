@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmurkcnrlqv58"
-path="res://.godot/imported/carkiller_menu_back.jpg-8a9dbaf79b02f96a9effc2bb472e2d2a.ctex"
+uid="uid://blajm8kmyk8tt"
+path="res://.godot/imported/carkiller_menu_back.jpg-0e80845bedd19b80513475c11a17aab5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/mainMenu/carkiller_menu_back.jpg"
-dest_files=["res://.godot/imported/carkiller_menu_back.jpg-8a9dbaf79b02f96a9effc2bb472e2d2a.ctex"]
+source_file="res://textures/UI/main_menu/carkiller_menu_back.jpg"
+dest_files=["res://.godot/imported/carkiller_menu_back.jpg-0e80845bedd19b80513475c11a17aab5.ctex"]
 
 [params]
 
@@ -23,8 +23,8 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
-mipmaps/limit=20
+mipmaps/generate=false
+mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
 process/channel_remap/red=0
