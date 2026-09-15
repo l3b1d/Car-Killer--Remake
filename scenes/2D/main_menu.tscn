@@ -2,12 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://cmurkcnrlqv58" path="res://images/mainMenu/carkiller_menu_back.jpg" id="1_64kna"]
 [ext_resource type="Shader" uid="uid://blqmd4ocv4gom" path="res://scenes/2D/shaders/main_menu_bckgr.gdshader" id="1_aj3j8"]
+[ext_resource type="Script" uid="uid://ci8kr1n110yju" path="res://scripts/2D/mainMenu/mainMenu.gd" id="1_rtsy5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_atfge"]
 shader = ExtResource("1_aj3j8")
 shader_parameter/blur_amount = 1.9790000940025
 
 [node name="MainMenu" type="Node2D" unique_id=2092837199]
+script = ExtResource("1_rtsy5")
 
 [node name="mainMenuBckgr" type="TextureRect" parent="." unique_id=1321381870]
 material = SubResource("ShaderMaterial_atfge")
@@ -64,3 +66,5 @@ theme_override_font_sizes/mono_font_size = 32
 text = "CAR KILLER: REMASTERED"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="mainMenuBckgr/VBoxContainer/quitBtn" to="." method="_on_quit_btn_pressed"]
