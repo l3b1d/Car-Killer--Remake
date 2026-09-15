@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://pyue8e60lk7s"]
+
+[ext_resource type="Script" uid="uid://ci8kr1n110yju" path="res://scripts/ui/main_menu/main_menu.gd" id="1_5jstl"]
+[ext_resource type="Shader" uid="uid://blqmd4ocv4gom" path="res://scenes/ui/main_menu/main_menu_background.gdshader" id="2_tfcbk"]
+[ext_resource type="Texture2D" uid="uid://cmurkcnrlqv58" path="res://textures/ui/main_menu/carkiller_menu_back.jpg" id="3_e2p27"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_atfge"]
+shader = ExtResource("2_tfcbk")
+shader_parameter/blur_amount = 1.9790000940025
+
+[node name="main_menu" type="Node2D" unique_id=2092837199]
+script = ExtResource("1_5jstl")
+
+[node name="main_menu_back" type="TextureRect" parent="." unique_id=1321381870]
+material = SubResource("ShaderMaterial_atfge")
+custom_minimum_size = Vector2(10, 0)
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_e2p27")
+stretch_mode = 6
+metadata/_edit_use_anchors_ = true
+
+[node name="buttons_container" type="VBoxContainer" parent="main_menu_back" unique_id=653549710]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -78.5
+offset_right = 81.0
+offset_bottom = 91.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="start_btn" type="Button" parent="main_menu_back/buttons_container" unique_id=1880148556]
+layout_mode = 2
+text = "Start"
+
+[node name="settings_btn" type="Button" parent="main_menu_back/buttons_container" unique_id=1775404678]
+layout_mode = 2
+text = "Settings"
+
+[node name="quit_btn" type="Button" parent="main_menu_back/buttons_container" unique_id=483669447]
+layout_mode = 2
+text = "Quit"
+
+[node name="main_text" type="RichTextLabel" parent="main_menu_back" unique_id=1590545555]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -202.75
+offset_top = 250.0
+offset_right = 202.75
+offset_bottom = 296.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+text = "CAR KILLER: REMASTERED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="main_menu_back/buttons_container/start_btn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="main_menu_back/buttons_container/settings_btn" to="." method="_on_settings_btn_pressed"]
+[connection signal="pressed" from="main_menu_back/buttons_container/quit_btn" to="." method="_on_quit_btn_pressed"]
