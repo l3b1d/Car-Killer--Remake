@@ -48,6 +48,10 @@ player_move_right={
 "events": []
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://localization/translations.en.translation", "res://localization/translations.ua.translation")
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

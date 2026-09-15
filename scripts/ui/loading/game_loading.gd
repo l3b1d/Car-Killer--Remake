@@ -10,6 +10,8 @@ var game_scene: PackedScene
 var loading_failed := false
 
 func _ready() -> void:
+	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TitleLabel.text = tr("CAR KILLER: REMASTERED")
+	start_button.text = tr("Start game")
 	start_button.disabled = true
 	start_button.visible = false
 	progress_bar.value = 0.0
@@ -29,11 +31,11 @@ func _process(_delta: float) -> void:
 
 	match load_status:
 		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
-			status_label.text = "Preparing the game..."
+			status_label.text = tr("Preparing the game...")
 		ResourceLoader.THREAD_LOAD_LOADED:
 			game_scene = ResourceLoader.load_threaded_get(BASE_GAME_SCENE)
 			progress_bar.value = 100.0
-			status_label.text = "Everything is ready."
+			status_label.text = tr("Everything is ready.")
 			start_button.visible = true
 			start_button.disabled = false
 			start_button.grab_focus()
@@ -46,6 +48,6 @@ func _on_start_button_pressed() -> void:
 
 func _show_loading_error() -> void:
 	loading_failed = true
-	status_label.text = "The game could not be loaded."
+	status_label.text = tr("The game could not be loaded.")
 	progress_bar.visible = false
 	start_button.visible = false
