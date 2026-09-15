@@ -11,13 +11,38 @@ config_version=5
 [application]
 
 config/name="Car Killer: Remake"
+config/version="0.0.1"
+run/main_scene="uid://dd07dfp6gt3dq"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+run/max_fps=60
+config/icon="res://images/icon.svg"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[input]
+
+player_move_forward={
+"deadzone": 0.2,
+"events": []
+}
+player_move_backward={
+"deadzone": 0.2,
+"events": []
+}
+player_move_left={
+"deadzone": 0.2,
+"events": []
+}
+player_move_right={
+"deadzone": 0.2,
+"events": []
+}
 
 [physics]
 
