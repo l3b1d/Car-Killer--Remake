@@ -1,21 +1,21 @@
 extends Control
 
-const BASE_GAME_SCENE := "res://scenes/levels/base_game.tscn"
+const base_game_scene := "res://scenes/levels/base_game.tscn"
 
-@onready var status_label: Label = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StatusLabel
-@onready var progress_bar: ProgressBar = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ProgressBar
-@onready var start_button: Button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton
+@onready var status_label: Label = $center_container/panel_container/margin_container/vbox_container/status_label
+@onready var progress_bar: ProgressBar = $center_container/panel_container/margin_container/vbox_container/progress_bar
+@onready var start_btn: Button = $center_container/panel_container/margin_container/vbox_container/start_btn
 
 var game_scene: PackedScene
 var loading_failed := false
-var game_scene_path := BASE_GAME_SCENE
+var game_scene_path := base_game_scene
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	$CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TitleLabel.text = tr("CAR KILLER: REMASTERED")
-	start_button.text = tr("Start game")
-	start_button.disabled = true
-	start_button.visible = false
+	$center_container/panel_container/margin_container/vbox_container/title_label.text = tr("CAR KILLER: REMASTERED")
+	start_btn.text = tr("Start game")
+	start_btn.disabled = true
+	start_btn.visible = false
 	progress_bar.value = 0.0
 
 	var request_result := ResourceLoader.load_threaded_request(game_scene_path)
@@ -38,13 +38,13 @@ func _process(_delta: float) -> void:
 			game_scene = ResourceLoader.load_threaded_get(game_scene_path)
 			progress_bar.value = 100.0
 			status_label.text = tr("Everything is ready.")
-			start_button.visible = true
-			start_button.disabled = false
-			start_button.grab_focus()
+			start_btn.visible = true
+			start_btn.disabled = false
+			start_btn.grab_focus()
 		ResourceLoader.THREAD_LOAD_FAILED, ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
 			_show_loading_error()
 
-func _on_start_button_pressed() -> void:
+func _on_start_btn_pressed() -> void:
 	if game_scene != null:
 		get_tree().change_scene_to_packed(game_scene)
 
@@ -52,4 +52,4 @@ func _show_loading_error() -> void:
 	loading_failed = true
 	status_label.text = tr("The game could not be loaded.")
 	progress_bar.visible = false
-	start_button.visible = false
+	start_btn.visible = false

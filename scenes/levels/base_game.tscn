@@ -1,103 +1,332 @@
 [gd_scene format=3 uid="uid://b8bsrwyaigd32"]
 
-[ext_resource type="Script" uid="uid://bot616sdg3472" path="res://scripts/base_game.gd" id="1_4r5m8"]
-[ext_resource type="PackedScene" uid="uid://dj7wpp5rghx6u" path="res://scenes/player/player.tscn" id="2_mx6w5"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/killer_car.tscn" id="3_killer_car"]
-[ext_resource type="PackedScene" uid="uid://bmfxolfhfqwys" path="res://models/trees/generic_tree_v1.tscn" id="4_generic_tree"]
-[ext_resource type="PackedScene" path="res://models/trees/generic_tree_v2.tscn" id="5_generic_tree_v2"]
+[ext_resource type="Script" uid="uid://bot616sdg3472" path="res://scripts/base_game.gd" id="1_base"]
+[ext_resource type="PackedScene" uid="uid://dj7wpp5rghx6u" path="res://scenes/player/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://dh4q7jsj4o6y6" path="res://scenes/enemies/killer_car.tscn" id="3_car"]
+[ext_resource type="PackedScene" uid="uid://bmfxolfhfqwys" path="res://models/trees/generic_tree_v1.tscn" id="4_tree1"]
+[ext_resource type="PackedScene" path="res://models/trees/generic_tree_v2.tscn" id="5_tree2"]
+[ext_resource type="Script" uid="uid://cicku0q3c1tpr" path="res://scripts/levels/car_killer_arena.gd" id="6_arena"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_tiunx"]
-size = Vector2(150, 150)
+[sub_resource type="PlaneMesh" id="PlaneMesh_ground"]
+size = Vector2(140, 100)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ground"]
-albedo_color = Color(0.38, 0.49, 0.24, 1)
-roughness = 0.9
-normal_scale = 0.4
+[sub_resource type="StandardMaterial3D" id="Material_ground"]
+albedo_color = Color(0.075, 0.13, 0.095, 1)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_v02hu"]
-data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+[sub_resource type="BoxShape3D" id="Shape_ground"]
+size = Vector3(140, 0.4, 100)
 
-[sub_resource type="Environment" id="Environment_7k0tw"]
+[sub_resource type="CylinderMesh" id="Mesh_dirt"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.16
+radial_segments = 10
+
+[sub_resource type="StandardMaterial3D" id="Material_dirt"]
+albedo_color = Color(0.16, 0.11, 0.075, 1)
+
+[sub_resource type="BoxMesh" id="Mesh_forest_floor"]
+size = Vector3(52, 0.12, 36)
+
+[sub_resource type="StandardMaterial3D" id="Material_forest_floor"]
+albedo_color = Color(0.035, 0.09, 0.055, 1)
+
+[sub_resource type="BoxShape3D" id="Shape_finish"]
+size = Vector3(20, 4, 12)
+
+[sub_resource type="StandardMaterial3D" id="Material_finish"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.25, 0.8, 0.45, 0.08)
+
+[sub_resource type="Environment" id="Environment_night"]
 background_mode = 1
-background_color = Color(0.75, 0.82, 0.88, 1)
-ambient_light_source = 2
-ambient_light_color = Color(0.9, 0.85, 0.75, 1)
+background_color = Color(0.008, 0.018, 0.045, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.08, 0.12, 0.22, 1)
+ambient_light_energy = 0.2
+reflected_light_source = 2
 ssao_enabled = true
-ssao_radius = 1.5
-ssao_intensity = 1.0
-ssao_power = 2.0
-glow_enabled = true
-glow_bloom = 0.08
+ssao_radius = 2.0
+ssao_intensity = 1.2
+fog_enabled = true
+fog_light_color = Color(0.035, 0.06, 0.11, 1)
+fog_light_energy = 0.24
+fog_density = 0.012
+fog_height = 2.0
+fog_height_density = 0.04
 
-[node name="Node3D" type="Node3D" unique_id=492269011]
-script = ExtResource("1_4r5m8")
+[sub_resource type="BoxShape3D" id="Shape_boundary_x"]
+size = Vector3(1.5, 5, 100)
 
-[node name="Ground" type="StaticBody3D" parent="." unique_id=321336743]
+[sub_resource type="BoxShape3D" id="Shape_boundary_z"]
+size = Vector3(140, 5, 1.5)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=699075130]
-mesh = SubResource("PlaneMesh_tiunx")
-surface_material_override/0 = SubResource("StandardMaterial3D_ground")
+[node name="car_killer_arena" type="Node3D" unique_id=2005223513]
+script = ExtResource("1_base")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1463134245]
-shape = SubResource("ConcavePolygonShape3D_v02hu")
+[node name="environment" type="Node3D" parent="." unique_id=1554408777]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1694248844]
-environment = SubResource("Environment_7k0tw")
+[node name="terrain" type="StaticBody3D" parent="environment" unique_id=206037589]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1927343997]
-transform = Transform3D(0.8, -0.4, 0.45, 0, 0.75, 0.66, -0.6, -0.53, 0.6, 0, 8, 0)
-light_color = Color(1, 0.96, 0.8, 1)
-light_energy = 1.2
+[node name="ground" type="MeshInstance3D" parent="environment/terrain" unique_id=299134127]
+mesh = SubResource("PlaneMesh_ground")
+surface_material_override/0 = SubResource("Material_ground")
+
+[node name="ground_collision" type="CollisionShape3D" parent="environment/terrain" unique_id=239735276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+shape = SubResource("Shape_ground")
+
+[node name="dirt_patch_01" type="MeshInstance3D" parent="environment/terrain" unique_id=601795133]
+transform = Transform3D(1.8, 0, 0, 0, 1, 0, 0, 0, 0.7, -24, 0.08, 12)
+mesh = SubResource("Mesh_dirt")
+surface_material_override/0 = SubResource("Material_dirt")
+
+[node name="dirt_patch_02" type="MeshInstance3D" parent="environment/terrain" unique_id=1283669935]
+transform = Transform3D(2.2, 0, 0, 0, 1, 0, 0, 0, 1.1, 28, 0.09, -5)
+mesh = SubResource("Mesh_dirt")
+surface_material_override/0 = SubResource("Material_dirt")
+
+[node name="dirt_patch_03" type="MeshInstance3D" parent="environment/terrain" unique_id=422099855]
+transform = Transform3D(1.3, 0, 0, 0, 1, 0, 0, 0, 2, -8, 0.1, -20)
+mesh = SubResource("Mesh_dirt")
+surface_material_override/0 = SubResource("Material_dirt")
+
+[node name="dirt_patch_04" type="MeshInstance3D" parent="environment/terrain" unique_id=1693925770]
+transform = Transform3D(1.4, 0, 0, 0, 1, 0, 0, 0, 0.8, 40, 0.08, 25)
+mesh = SubResource("Mesh_dirt")
+surface_material_override/0 = SubResource("Material_dirt")
+
+[node name="forest_floor" type="MeshInstance3D" parent="environment" unique_id=472736390]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, -40)
+mesh = SubResource("Mesh_forest_floor")
+surface_material_override/0 = SubResource("Material_forest_floor")
+
+[node name="forest" type="Node3D" parent="environment" unique_id=1644210527]
+
+[node name="tree_01" parent="environment/forest" unique_id=1293906974 instance=ExtResource("4_tree1")]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, -23, 0, -31)
+
+[node name="tree_02" parent="environment/forest" unique_id=559739870 instance=ExtResource("5_tree2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, -31)
+
+[node name="tree_03" parent="environment/forest" unique_id=1798795451 instance=ExtResource("4_tree1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -40)
+
+[node name="tree_11" parent="environment/forest" unique_id=385954988 instance=ExtResource("4_tree1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -40)
+
+[node name="tree_12" parent="environment/forest" unique_id=1182545789 instance=ExtResource("4_tree1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -40)
+
+[node name="tree_13" parent="environment/forest" unique_id=1559649455 instance=ExtResource("4_tree1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -40)
+
+[node name="tree_14" parent="environment/forest" unique_id=1983919695 instance=ExtResource("4_tree1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, -40)
+
+[node name="tree_15" parent="environment/forest" unique_id=1207651559 instance=ExtResource("4_tree1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.048742, 0, -40)
+
+[node name="tree_04" parent="environment/forest" unique_id=567682222 instance=ExtResource("5_tree2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0, -40)
+
+[node name="tree_05" parent="environment/forest" unique_id=1857236904 instance=ExtResource("4_tree1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 0, -49)
+
+[node name="tree_06" parent="environment/forest" unique_id=2041606724 instance=ExtResource("5_tree2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -49)
+
+[node name="tree_07" parent="environment/forest" unique_id=1560525655 instance=ExtResource("4_tree1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -47)
+
+[node name="tree_08" parent="environment/forest" unique_id=1616107682 instance=ExtResource("5_tree2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -47)
+
+[node name="tree_09" parent="environment/forest" unique_id=1713594726 instance=ExtResource("4_tree1")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -34, 0, -34)
+
+[node name="tree_10" parent="environment/forest" unique_id=2020881281 instance=ExtResource("5_tree2")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 34, 0, -34)
+
+[node name="tree_16" parent="environment/forest" instance=ExtResource("4_tree1")]
+position = Vector3(-42, 0, -30)
+scale = Vector3(0.85, 0.85, 0.85)
+
+[node name="tree_17" parent="environment/forest" instance=ExtResource("5_tree2")]
+position = Vector3(42, 0, -30)
+scale = Vector3(0.85, 0.85, 0.85)
+
+[node name="tree_18" parent="environment/forest" instance=ExtResource("4_tree1")]
+position = Vector3(-43, 0, -40)
+
+[node name="tree_19" parent="environment/forest" instance=ExtResource("5_tree2")]
+position = Vector3(43, 0, -40)
+
+[node name="tree_20" parent="environment/forest" instance=ExtResource("4_tree1")]
+position = Vector3(-38, 0, -49)
+scale = Vector3(1.1, 1.1, 1.1)
+
+[node name="tree_21" parent="environment/forest" instance=ExtResource("5_tree2")]
+position = Vector3(38, 0, -49)
+scale = Vector3(1.1, 1.1, 1.1)
+
+[node name="tree_22" parent="environment/forest" instance=ExtResource("4_tree1")]
+position = Vector3(-4, 0, -51)
+scale = Vector3(0.85, 0.85, 0.85)
+
+[node name="tree_23" parent="environment/forest" instance=ExtResource("5_tree2")]
+position = Vector3(4, 0, -51)
+scale = Vector3(0.85, 0.85, 0.85)
+
+[node name="tree_24" parent="environment/forest" instance=ExtResource("4_tree1")]
+position = Vector3(-52, 0, -36)
+scale = Vector3(0.8, 0.8, 0.8)
+
+[node name="tree_25" parent="environment/forest" instance=ExtResource("5_tree2")]
+position = Vector3(52, 0, -36)
+scale = Vector3(0.8, 0.8, 0.8)
+
+[node name="gameplay" type="Node3D" parent="." unique_id=709915655]
+
+[node name="player_spawn" type="Marker3D" parent="gameplay" unique_id=329686713]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 32)
+
+[node name="killer_car_spawn" type="Marker3D" parent="gameplay" unique_id=192096688]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.6, 43)
+
+[node name="finish_zone" type="Area3D" parent="gameplay" unique_id=978265343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -42)
+collision_layer = 0
+script = ExtResource("6_arena")
+
+[node name="trigger_shape" type="CollisionShape3D" parent="gameplay/finish_zone" unique_id=864626006]
+shape = SubResource("Shape_finish")
+
+[node name="lighting" type="Node3D" parent="." unique_id=689020289]
+
+[node name="world_environment" type="WorldEnvironment" parent="lighting" unique_id=452354628]
+environment = SubResource("Environment_night")
+
+[node name="moon_light" type="DirectionalLight3D" parent="lighting" unique_id=2099119506]
+transform = Transform3D(0.90630776, 0.3140666, -0.2827868, 0, 0.66913056, 0.74314487, 0.42261827, -0.67351794, 0.6064382, 0, 0, 0)
+light_color = Color(0.42, 0.55, 0.9, 1)
+light_energy = 0.16
 shadow_enabled = true
 
-[node name="PointLight3D" type="PointLight3D" parent="." unique_id=1995536868]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4, 2)
-light_energy = 1.8
-shadow_enabled = true
+[node name="start_lantern" type="OmniLight3D" parent="lighting" unique_id=481122619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 29)
+light_color = Color(1, 0.45, 0.16, 1)
+light_energy = 0.45
+omni_range = 7.0
 
-[node name="Player" parent="." unique_id=760738059 instance=ExtResource("2_mx6w5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+[node name="forest_glow" type="OmniLight3D" parent="lighting" unique_id=366929685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -33)
+light_color = Color(0.15, 0.7, 0.35, 1)
+light_energy = 0.3
+omni_range = 10.0
 
-[node name="KillerCar" parent="." unique_id=1725100366 instance=ExtResource("3_killer_car")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.155798, 0.6, -20)
+[node name="map_bounds" type="StaticBody3D" parent="." unique_id=582092162]
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="west_boundary" type="CollisionShape3D" parent="map_bounds" unique_id=1624419176]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 2.5, 0)
+shape = SubResource("Shape_boundary_x")
 
-[node name="StatsPanel" type="PanelContainer" parent="HUD"]
+[node name="east_boundary" type="CollisionShape3D" parent="map_bounds" unique_id=620720659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 2.5, 0)
+shape = SubResource("Shape_boundary_x")
+
+[node name="north_boundary" type="CollisionShape3D" parent="map_bounds" unique_id=1345009554]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 50)
+shape = SubResource("Shape_boundary_z")
+
+[node name="south_boundary" type="CollisionShape3D" parent="map_bounds" unique_id=2096819290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -50)
+shape = SubResource("Shape_boundary_z")
+
+[node name="player" parent="." unique_id=1923519203 instance=ExtResource("2_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 32)
+
+[node name="killer_car" parent="." unique_id=1660832965 instance=ExtResource("3_car")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.6, 43)
+
+[node name="hud" type="CanvasLayer" parent="." unique_id=280398237]
+
+[node name="stats_panel" type="PanelContainer" parent="hud" unique_id=903936338]
 offset_left = 24.0
 offset_top = 24.0
 offset_right = 284.0
 offset_bottom = 190.0
 
-[node name="Stats" type="VBoxContainer" parent="HUD/StatsPanel"]
+[node name="stats" type="VBoxContainer" parent="hud/stats_panel" unique_id=273488787]
+layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="HealthLabel" type="Label" parent="HUD/StatsPanel/Stats"]
+[node name="health_label" type="Label" parent="hud/stats_panel/stats" unique_id=434163002]
+layout_mode = 2
 text = "HP: 100 / 100"
 
-[node name="HpBar" type="ProgressBar" parent="HUD/StatsPanel/Stats"]
+[node name="hp_bar" type="ProgressBar" parent="hud/stats_panel/stats" unique_id=805252883]
 custom_minimum_size = Vector2(0, 18)
-max_value = 100.0
+layout_mode = 2
 value = 100.0
 show_percentage = false
 
-[node name="StaminaLabel" type="Label" parent="HUD/StatsPanel/Stats"]
+[node name="stamina_label" type="Label" parent="hud/stats_panel/stats" unique_id=618148838]
+layout_mode = 2
 text = "STAMINA: 100 / 100"
 
-[node name="StaminaBar" type="ProgressBar" parent="HUD/StatsPanel/Stats"]
+[node name="stamina_bar" type="ProgressBar" parent="hud/stats_panel/stats" unique_id=930519288]
 custom_minimum_size = Vector2(0, 18)
-max_value = 100.0
+layout_mode = 2
 value = 100.0
 show_percentage = false
 
-[node name="AmmoLabel" type="Label" parent="HUD/StatsPanel/Stats"]
+[node name="ammo_label" type="Label" parent="hud/stats_panel/stats" unique_id=1669060065]
+layout_mode = 2
 text = "SHELLS: 2 / 2"
 
-[node name="GenericTreeV1" parent="." instance=ExtResource("4_generic_tree")]
-position = Vector3(-8, 0, -12)
+[node name="victory_panel" type="PanelContainer" parent="hud"]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -160.0
+offset_right = 240.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="GenericTreeV2" parent="." instance=ExtResource("5_generic_tree_v2")]
-position = Vector3(8, 0, -12)
+[node name="victory_content" type="VBoxContainer" parent="hud/victory_panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1382381312]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.565962, 0)
+[node name="title_label" type="Label" parent="hud/victory_panel/victory_content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "YOU ESCAPED"
+horizontal_alignment = 1
+
+[node name="time_label" type="Label" parent="hud/victory_panel/victory_content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "TIME: 0.00 s"
+horizontal_alignment = 1
+
+[node name="restart_btn" type="Button" parent="hud/victory_panel/victory_content"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+text = "Restart"
+
+[node name="menu_btn" type="Button" parent="hud/victory_panel/victory_content"]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+text = "Exit to menu"
+
+[connection signal="pressed" from="hud/victory_panel/victory_content/restart_btn" to="." method="_on_victory_restart_btn_pressed"]
+[connection signal="pressed" from="hud/victory_panel/victory_content/menu_btn" to="." method="_on_victory_menu_btn_pressed"]

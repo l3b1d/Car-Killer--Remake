@@ -6,8 +6,8 @@ signal ammo_changed(ammo: int, magazine_size: int, reloading: bool)
 @export var hands_scene: PackedScene
 @export var projectile_scene: PackedScene
 
-@onready var ammo_component: Node = $Ammo
-@onready var firing_component: Node = $Firing
+@onready var ammo_component: Node = $ammo
+@onready var firing_component: Node = $firing
 
 var ammo: int:
 	get:

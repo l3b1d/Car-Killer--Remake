@@ -17,14 +17,14 @@ extends Node
 @export var reverse_angle_threshold := 1.65
 
 @onready var car: CharacterBody3D = get_parent()
-@onready var hit_reaction: Node = car.get_node("HitReaction")
-@onready var model: Node3D = car.get_node("KillerCarModel")
-@onready var front_left_steer: Node3D = model.get_node("FrontWheelLeftSteer")
-@onready var front_right_steer: Node3D = model.get_node("FrontWheelRightSteer")
-@onready var front_left_wheel: Node3D = model.get_node("FrontWheelLeftSteer/WheelFrontLeft")
-@onready var front_right_wheel: Node3D = model.get_node("FrontWheelRightSteer/WheelFrontRight")
-@onready var rear_left_wheel: Node3D = model.get_node("WheelRearLeft")
-@onready var rear_right_wheel: Node3D = model.get_node("WheelRearRight")
+@onready var hit_reaction: Node = car.get_node("hit_reaction")
+@onready var model: Node3D = car.get_node("killer_car_model")
+@onready var front_left_steer: Node3D = model.get_node("front_left_wheel_steer")
+@onready var front_right_steer: Node3D = model.get_node("front_right_wheel_steer")
+@onready var front_left_wheel: Node3D = model.get_node("front_left_wheel_steer/wheel_front_left")
+@onready var front_right_wheel: Node3D = model.get_node("front_right_wheel_steer/wheel_front_right")
+@onready var rear_left_wheel: Node3D = model.get_node("wheel_rear_left")
+@onready var rear_right_wheel: Node3D = model.get_node("wheel_rear_right")
 
 var target: Node3D
 var drive_velocity := Vector3.ZERO

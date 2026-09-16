@@ -1,8 +1,8 @@
 extends Node2D
 
-@onready var display_mode_option: OptionButton = $settingsBckgr/display_mode_option
-@onready var language_option: OptionButton = $settingsBckgr/language_option
-@onready var save_button: Button = $settingsBckgr/san_btn
+@onready var display_mode_option: OptionButton = $settings_background/display_mode_option
+@onready var language_option: OptionButton = $settings_background/language_option
+@onready var save_btn: Button = $settings_background/san_btn
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -25,9 +25,9 @@ func _on_language_option_item_selected(index: int) -> void:
 	_update_text()
 
 func _update_text() -> void:
-	$settingsBckgr/display_label.text = tr("Display mode")
-	$settingsBckgr/language_label.text = tr("Language")
-	save_button.text = tr("Save & Exit")
+	$settings_background/display_label.text = tr("Display mode")
+	$settings_background/language_label.text = tr("Language")
+	save_btn.text = tr("Save & Exit")
 	display_mode_option.set_item_text(0, tr("Windowed"))
 	display_mode_option.set_item_text(1, tr("Fullscreen"))
 	language_option.set_item_text(0, tr("English"))

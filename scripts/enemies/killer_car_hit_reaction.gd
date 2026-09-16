@@ -28,5 +28,5 @@ func apply_impact(impact_direction: Vector3) -> void:
 		return
 
 	horizontal_direction = horizontal_direction.normalized()
-	var vehicle_mass := float(get_parent().get_node("Movement").get("mass"))
+	var vehicle_mass := float(get_parent().get_node("movement").get("mass"))
 	knockback_velocity = horizontal_direction * shot_impulse / vehicle_mass
