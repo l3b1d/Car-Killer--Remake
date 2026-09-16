@@ -23,34 +23,34 @@ roughness = 0.65
 emission_enabled = true
 emission = Color(0.3, 0.5, 1, 0.25)
 
-[node name="Player" type="CharacterBody3D" groups=["player"]]
+[node name="player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_pq8u0")
 
-[node name="Health" type="Node" parent="."]
+[node name="health" type="Node" parent="."]
 script = ExtResource("2_health")
 
-[node name="Stamina" type="Node" parent="."]
+[node name="stamina" type="Node" parent="."]
 script = ExtResource("3_stamina")
 
-[node name="Movement" type="Node" parent="."]
+[node name="movement" type="Node" parent="."]
 script = ExtResource("4_movement")
 
-[node name="Camera" type="Node" parent="."]
+[node name="camera" type="Node" parent="."]
 script = ExtResource("5_camera")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="collision_shape_3d" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_6m7n3")
 
-[node name="BodyMesh" type="MeshInstance3D" parent="."]
+[node name="body_mesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_jv2u7")
 cast_shadow = 0
 surface_material_override/0 = SubResource("StandardMaterial3D_u7l2g")
 
-[node name="CameraPivot" type="Node3D" parent="."]
+[node name="camera_pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 
-[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+[node name="camera_3d" type="Camera3D" parent="camera_pivot"]
 current = true
 fov = 85.0
 
-[node name="Shotgun" parent="CameraPivot" instance=ExtResource("6_shotgun")]
+[node name="shotgun" parent="camera_pivot" instance=ExtResource("6_shotgun")]

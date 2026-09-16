@@ -2,9 +2,9 @@ extends CharacterBody3D
 
 signal stats_changed(health: int, max_health: int, stamina: float, max_stamina: float)
 
-@onready var health_component: Node = $Health
-@onready var stamina_component: Node = $Stamina
-@onready var movement_component: Node = $Movement
+@onready var health_component: Node = $health
+@onready var stamina_component: Node = $stamina
+@onready var movement_component: Node = $movement
 
 var health: int:
 	get:

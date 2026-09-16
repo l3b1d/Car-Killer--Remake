@@ -1,10 +1,10 @@
 extends CharacterBody3D
 
-@onready var hit_reaction_component: Node = $HitReaction
+@onready var hit_reaction_component: Node = $hit_reaction
 
 func _physics_process(delta: float) -> void:
-	$Movement.physics_process(delta)
-	$ContactDamage.physics_process(delta)
+	$movement.physics_process(delta)
+	$contact_damage.physics_process(delta)
 
 func apply_shot_slow() -> void:
 	hit_reaction_component.apply_slow()

@@ -6,7 +6,7 @@ extends Node
 @export var gravity := 9.8
 
 @onready var player: CharacterBody3D = get_parent()
-@onready var stamina: Node = get_node("../Stamina")
+@onready var stamina: Node = get_node("../stamina")
 
 func physics_process(delta: float) -> void:
 	if not player.is_on_floor():

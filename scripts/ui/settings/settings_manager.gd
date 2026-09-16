@@ -1,10 +1,10 @@
 extends Node
 
-const PLAYER_CONFIG_PATH := "user://player_config.cfg"
-const LEGACY_SETTINGS_PATH := "user://settings.cfg"
-const DISPLAY_SECTION := "display"
-const FULLSCREEN_KEY := "fullscreen"
-const LANGUAGE_KEY := "language"
+const player_config_path := "user://player_config.cfg"
+const legacy_settings_path := "user://settings.cfg"
+const display_section := "display"
+const fullscreen_key := "fullscreen"
+const language_key := "language"
 
 var fullscreen := true
 var language := "en"
@@ -18,9 +18,9 @@ func save_settings(fullscreen_enabled: bool, language_code: String = language) -
 	language = language_code
 
 	var config := ConfigFile.new()
-	config.set_value(DISPLAY_SECTION, FULLSCREEN_KEY, fullscreen)
-	config.set_value(DISPLAY_SECTION, LANGUAGE_KEY, language)
-	config.save(PLAYER_CONFIG_PATH)
+	config.set_value(display_section, fullscreen_key, fullscreen)
+	config.set_value(display_section, language_key, language)
+	config.save(player_config_path)
 	_apply_language()
 	_apply_display_mode()
 
@@ -34,18 +34,18 @@ func set_language(language_code: String) -> void:
 
 func _load_settings() -> void:
 	var config := ConfigFile.new()
-	if config.load(PLAYER_CONFIG_PATH) == OK:
-		fullscreen = config.get_value(DISPLAY_SECTION, FULLSCREEN_KEY, true)
-		language = config.get_value(DISPLAY_SECTION, LANGUAGE_KEY, "en")
+	if config.load(player_config_path) == OK:
+		fullscreen = config.get_value(display_section, fullscreen_key, true)
+		language = config.get_value(display_section, language_key, "en")
 		if language == "uk":
 			language = "ua"
 			save_settings(fullscreen, language)
 		_apply_language()
 		return
 
-	if config.load(LEGACY_SETTINGS_PATH) == OK:
-		fullscreen = config.get_value(DISPLAY_SECTION, FULLSCREEN_KEY, true)
-		language = config.get_value(DISPLAY_SECTION, LANGUAGE_KEY, "en")
+	if config.load(legacy_settings_path) == OK:
+		fullscreen = config.get_value(display_section, fullscreen_key, true)
+		language = config.get_value(display_section, language_key, "en")
 		if language == "uk":
 			language = "ua"
 		save_settings(fullscreen)

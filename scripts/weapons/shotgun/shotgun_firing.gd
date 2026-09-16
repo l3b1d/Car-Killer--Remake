@@ -6,9 +6,9 @@ extends Node
 var cooldown_timer := 0.0
 
 @onready var shotgun: Node3D = get_parent()
-@onready var camera: Camera3D = shotgun.get_node("../Camera3D")
-@onready var muzzle: Node3D = shotgun.get_node("Muzzle")
-@onready var ammo: Node = shotgun.get_node("Ammo")
+@onready var camera: Camera3D = shotgun.get_node("../camera_3d")
+@onready var muzzle: Node3D = shotgun.get_node("muzzle")
+@onready var ammo: Node = shotgun.get_node("ammo")
 
 func process_cooldown(delta: float) -> void:
 	cooldown_timer = maxf(cooldown_timer - delta, 0.0)

@@ -1,9 +1,9 @@
 extends Node
 
-const COLLISION_DAMAGE := 30
-const DAMAGE_INTERVAL := 1.0
+const collision_damage := 30
+const damage_interval := 1.0
 
-@onready var damage_area: Area3D = get_parent().get_node("DamageArea")
+@onready var damage_area: Area3D = get_parent().get_node("damage_area")
 
 var player_contacts: Dictionary = {}
 var damage_timer := 0.0
@@ -23,8 +23,8 @@ func physics_process(delta: float) -> void:
 			player_contacts.erase(target)
 			return
 		if target.has_method("take_damage"):
-			target.take_damage(COLLISION_DAMAGE)
-		damage_timer = DAMAGE_INTERVAL
+			target.take_damage(collision_damage)
+			damage_timer = damage_interval
 
 func _on_damage_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
