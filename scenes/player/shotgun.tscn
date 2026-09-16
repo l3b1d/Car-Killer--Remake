@@ -1,20 +1,20 @@
 [gd_scene load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://scripts/weapons/shotgun/shotgun.gd" id="1_shotgun"]
-[ext_resource type="PackedScene" path="res://models/weapons/shotgun_model.tscn" id="2_shotgun_model"]
-[ext_resource type="PackedScene" path="res://models/weapons/shotgun_hands.tscn" id="3_hands"]
+[ext_resource type="PackedScene" path="res://models/weapons/doublebarrel_weapon.tscn" id="2_double_barrel"]
+[ext_resource type="PackedScene" path="res://models/weapons/weapon_hands.tscn" id="3_hands"]
 [ext_resource type="PackedScene" path="res://scenes/player/shotgun_projectile.tscn" id="4_projectile"]
 [ext_resource type="Script" path="res://scripts/weapons/shotgun/shotgun_ammo.gd" id="4_ammo"]
 [ext_resource type="Script" path="res://scripts/weapons/shotgun/shotgun_firing.gd" id="5_firing"]
 
 [node name="Shotgun" type="Node3D"]
 script = ExtResource("1_shotgun")
-model_scene = ExtResource("2_shotgun_model")
+model_scene = ExtResource("2_double_barrel")
 hands_scene = ExtResource("3_hands")
 projectile_scene = ExtResource("4_projectile")
 
 [node name="Muzzle" type="Node3D" parent="."]
-position = Vector3(0.42, -0.32, -1.08)
+position = Vector3(0.419, -0.2825, -1.4625)
 
 [node name="Ammo" type="Node" parent="."]
 script = ExtResource("4_ammo")

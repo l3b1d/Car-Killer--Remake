@@ -18,7 +18,7 @@ func _ready() -> void:
 	add_child(death_screen)
 	player.stats_changed.connect(_on_player_stats_changed)
 	shotgun.ammo_changed.connect(_on_ammo_changed)
-	_on_player_stats_changed(player.health, player.MAX_HEALTH, player.stamina, player.MAX_STAMINA)
+	_on_player_stats_changed(player.health, player.max_health, player.stamina, player.max_stamina)
 	_on_ammo_changed(shotgun.ammo, shotgun.magazine_size, shotgun.reloading)
 
 func _on_player_stats_changed(health: int, max_health: int, stamina: float, max_stamina: float) -> void:

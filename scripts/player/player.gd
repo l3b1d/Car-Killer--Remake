@@ -1,8 +1,5 @@
 extends CharacterBody3D
 
-const MAX_HEALTH := 100
-const MAX_STAMINA := 100.0
-
 signal stats_changed(health: int, max_health: int, stamina: float, max_stamina: float)
 
 @onready var health_component: Node = $Health
@@ -16,6 +13,14 @@ var health: int:
 var stamina: float:
 	get:
 		return stamina_component.stamina
+
+var max_health: int:
+	get:
+		return health_component.max_health
+
+var max_stamina: float:
+	get:
+		return stamina_component.max_stamina
 
 func _ready() -> void:
 	_setup_default_input()

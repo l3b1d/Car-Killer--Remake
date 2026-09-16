@@ -43,6 +43,7 @@ shape = SubResource("CapsuleShape3D_6m7n3")
 
 [node name="BodyMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_jv2u7")
+cast_shadow = 0
 surface_material_override/0 = SubResource("StandardMaterial3D_u7l2g")
 
 [node name="CameraPivot" type="Node3D" parent="."]

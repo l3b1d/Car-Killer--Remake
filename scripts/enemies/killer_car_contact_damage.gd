@@ -5,8 +5,7 @@ const DAMAGE_INTERVAL := 1.0
 
 @onready var damage_area: Area3D = get_parent().get_node("DamageArea")
 
-var target: Node3D
-var player_in_contact := false
+var player_contacts: Dictionary = {}
 var damage_timer := 0.0
 
 func _ready() -> void:
@@ -14,21 +13,29 @@ func _ready() -> void:
 	damage_area.body_exited.connect(_on_damage_area_body_exited)
 
 func physics_process(delta: float) -> void:
-	if not player_in_contact:
+	if player_contacts.is_empty():
 		return
 
 	damage_timer -= delta
-	if damage_timer <= 0.0 and is_instance_valid(target) and target.has_method("take_damage"):
-		target.take_damage(COLLISION_DAMAGE)
+	if damage_timer <= 0.0:
+		var target := player_contacts.keys()[0] as Node3D
+		if not is_instance_valid(target):
+			player_contacts.erase(target)
+			return
+		if target.has_method("take_damage"):
+			target.take_damage(COLLISION_DAMAGE)
 		damage_timer = DAMAGE_INTERVAL
 
 func _on_damage_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		target = body
-		player_in_contact = true
+		player_contacts[body] = player_contacts.get(body, 0) + 1
 		damage_timer = 0.0
 
 func _on_damage_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
-		player_in_contact = false
-		damage_timer = 0.0
+		if not player_contacts.has(body):
+			return
+		player_contacts[body] -= 1
+		if player_contacts[body] <= 0:
+			player_contacts.erase(body)
+			damage_timer = 0.0

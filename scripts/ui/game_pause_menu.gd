@@ -15,6 +15,9 @@ func _input(event: InputEvent) -> void:
 	if not (event is InputEventKey):
 		return
 	if event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+		var death_screen := get_tree().get_first_node_in_group("death_screen") as CanvasLayer
+		if death_screen != null and death_screen.visible:
+			return
 		if panel.visible:
 			_resume_game()
 		else:

@@ -8,6 +8,7 @@ const BASE_GAME_SCENE := "res://scenes/levels/base_game.tscn"
 
 var game_scene: PackedScene
 var loading_failed := false
+var game_scene_path := BASE_GAME_SCENE
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -17,7 +18,7 @@ func _ready() -> void:
 	start_button.visible = false
 	progress_bar.value = 0.0
 
-	var request_result := ResourceLoader.load_threaded_request(BASE_GAME_SCENE)
+	var request_result := ResourceLoader.load_threaded_request(game_scene_path)
 	if request_result != OK:
 		_show_loading_error()
 
@@ -26,7 +27,7 @@ func _process(_delta: float) -> void:
 		return
 
 	var progress := []
-	var load_status := ResourceLoader.load_threaded_get_status(BASE_GAME_SCENE, progress)
+	var load_status := ResourceLoader.load_threaded_get_status(game_scene_path, progress)
 	if not progress.is_empty():
 		progress_bar.value = progress[0] * 100.0
 
@@ -34,7 +35,7 @@ func _process(_delta: float) -> void:
 		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 			status_label.text = tr("Preparing the game...")
 		ResourceLoader.THREAD_LOAD_LOADED:
-			game_scene = ResourceLoader.load_threaded_get(BASE_GAME_SCENE)
+			game_scene = ResourceLoader.load_threaded_get(game_scene_path)
 			progress_bar.value = 100.0
 			status_label.text = tr("Everything is ready.")
 			start_button.visible = true
