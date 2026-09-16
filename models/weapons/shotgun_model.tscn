@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://xivya2kaikt2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_metal"]
+albedo_color = Color(0.08, 0.09, 0.1, 1)
+metallic = 0.8
+roughness = 0.25
+
+[sub_resource type="BoxMesh" id="BoxMesh_receiver"]
+size = Vector3(0.22, 0.18, 0.34)
+
+[sub_resource type="BoxMesh" id="BoxMesh_barrel"]
+size = Vector3(0.065, 0.065, 0.78)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wood"]
+albedo_color = Color(0.24, 0.08, 0.025, 1)
+roughness = 0.7
+
+[sub_resource type="BoxMesh" id="BoxMesh_stock"]
+size = Vector3(0.18, 0.16, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_grip"]
+size = Vector3(0.13, 0.3, 0.16)
+
+[node name="ShotgunModel" type="Node3D" unique_id=629353302]
+transform = Transform3D(1, 0, 0, 0, 0.99981916, -0.019018888, 0, 0.019018888, 0.99981916, 0.42, -0.32, -0.7)
+
+[node name="Receiver" type="MeshInstance3D" parent="." unique_id=1426326937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.02)
+material_override = SubResource("StandardMaterial3D_metal")
+mesh = SubResource("BoxMesh_receiver")
+
+[node name="LeftBarrel" type="MeshInstance3D" parent="." unique_id=217773176]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045, 0.02, -0.52)
+material_override = SubResource("StandardMaterial3D_metal")
+mesh = SubResource("BoxMesh_barrel")
+
+[node name="RightBarrel" type="MeshInstance3D" parent="." unique_id=862655586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.045, 0.02, -0.52)
+material_override = SubResource("StandardMaterial3D_metal")
+mesh = SubResource("BoxMesh_barrel")
+
+[node name="Foregrip" type="MeshInstance3D" parent="." unique_id=1026227652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, -0.29)
+material_override = SubResource("StandardMaterial3D_wood")
+mesh = SubResource("BoxMesh_stock")
+
+[node name="Grip" type="MeshInstance3D" parent="." unique_id=1650646207]
+transform = Transform3D(1, 0, 0, 0, 0.95105654, 0.309017, 0, -0.309017, 0.95105654, 0, -0.15, 0.18)
+material_override = SubResource("StandardMaterial3D_wood")
+mesh = SubResource("BoxMesh_grip")
+
+[node name="Stock" type="MeshInstance3D" parent="." unique_id=258080989]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0.39)
+material_override = SubResource("StandardMaterial3D_wood")
+mesh = SubResource("BoxMesh_stock")

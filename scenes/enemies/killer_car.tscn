@@ -1,14 +1,10 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://dh4q7jsj4o6y6"]
 
-[ext_resource type="Script" path="res://scripts/enemies/killer_car.gd" id="1_killer_car"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_killer_car"]
-size = Vector3(2.4, 1.2, 4.2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_killer_car"]
-albedo_color = Color(0.75, 0.025, 0.02, 1)
-metallic = 0.15
-roughness = 0.4
+[ext_resource type="Script" uid="uid://djqcakdrjwmho" path="res://scripts/enemies/killer_car.gd" id="1_killer_car"]
+[ext_resource type="Script" path="res://scripts/enemies/killer_car_movement.gd" id="2_movement"]
+[ext_resource type="Script" path="res://scripts/enemies/killer_car_hit_reaction.gd" id="3_hit_reaction"]
+[ext_resource type="Script" path="res://scripts/enemies/killer_car_contact_damage.gd" id="4_contact_damage"]
+[ext_resource type="PackedScene" path="res://models/enemies/killer_car_model.tscn" id="5_killer_car_model"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_killer_car"]
 size = Vector3(2.4, 1.2, 4.2)
@@ -16,19 +12,25 @@ size = Vector3(2.4, 1.2, 4.2)
 [sub_resource type="SphereShape3D" id="SphereShape3D_damage_area"]
 radius = 2.8
 
-[node name="KillerCar" type="CharacterBody3D"]
+[node name="KillerCar" type="CharacterBody3D" unique_id=701934065]
 script = ExtResource("1_killer_car")
 
-[node name="BodyMesh" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_killer_car")
-surface_material_override/0 = SubResource("StandardMaterial3D_killer_car")
+[node name="Movement" type="Node" parent="."]
+script = ExtResource("2_movement")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="HitReaction" type="Node" parent="."]
+script = ExtResource("3_hit_reaction")
+
+[node name="ContactDamage" type="Node" parent="."]
+script = ExtResource("4_contact_damage")
+
+[node name="KillerCarModel" parent="." instance=ExtResource("5_killer_car_model")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=628766420]
 shape = SubResource("BoxShape3D_killer_car")
 
-[node name="DamageArea" type="Area3D" parent="."]
+[node name="DamageArea" type="Area3D" parent="." unique_id=1363692755]
 collision_layer = 0
-collision_mask = 1
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea" unique_id=312313780]
 shape = SubResource("SphereShape3D_damage_area")
