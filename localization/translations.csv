@@ -18,6 +18,9 @@ Game paused,Game paused,Гра призупинена
 Resume,Resume,Продовжити
 Main Menu,Main Menu,Головне меню
 Quit Game,Quit Game,Вийти з гри
+You died,You died,Ви загинули
+Restart,Restart,Рестарт
+Exit to menu,Exit to menu,Вийти в меню
 HP status,HP: %d / %d,ЗДОРОВ'Я: %d / %d
 Stamina status,STAMINA: %d / %d,ВИТРИВАЛІСТЬ: %d / %d
 Shells status,SHELLS: %d / %d,ПАТРОНИ: %d / %d
