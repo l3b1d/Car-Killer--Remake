@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://baxev2qfjnkxu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_body"]
-albedo_color = Color(0.07, 0.09, 0.1, 1)
+albedo_color = Color(0.5893331, 0.65366846, 0.6926615, 1)
 metallic = 0.65
 roughness = 0.34
 
@@ -18,12 +18,12 @@ size = Vector3(2.12, 0.34, 0.92)
 size = Vector3(1.72, 0.49, 1.65)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_glass"]
-albedo_color = Color(0.015, 0.035, 0.045, 1)
+albedo_color = Color(0.53622204, 0.7496095, 0.870939, 1)
 metallic = 0.15
 roughness = 0.12
 
 [sub_resource type="BoxMesh" id="BoxMesh_window_front"]
-size = Vector3(1.72, 0.42, 0.06)
+size = Vector3(1.72, 0.534707, 0.06)
 
 [sub_resource type="BoxMesh" id="BoxMesh_window_side"]
 size = Vector3(0.06, 0.42, 0.72)
@@ -69,12 +69,12 @@ material_override = SubResource("StandardMaterial3D_body")
 mesh = SubResource("BoxMesh_body")
 
 [node name="Hood" type="MeshInstance3D" parent="." unique_id=1391317709]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29451343, -1.34)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27384385, -1.34)
 material_override = SubResource("StandardMaterial3D_body")
 mesh = SubResource("BoxMesh_hood")
 
 [node name="Trunk" type="MeshInstance3D" parent="." unique_id=1044721179]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2991611, 1.42)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2593297, 1.42)
 material_override = SubResource("StandardMaterial3D_body")
 mesh = SubResource("BoxMesh_trunk")
 
@@ -84,7 +84,7 @@ material_override = SubResource("StandardMaterial3D_body")
 mesh = SubResource("BoxMesh_roof")
 
 [node name="FrontWindow" type="MeshInstance3D" parent="." unique_id=1031248281]
-transform = Transform3D(1, 0, 0, 0, 0.91250086, -0.40907487, 0, 0.40907487, 0.91250086, 0, 0.72, -0.84)
+transform = Transform3D(1, 0, 0, 0, 0.91250086, -0.40907487, 0, 0.40907487, 0.91250086, 0, 0.6676649, -0.86346185)
 material_override = SubResource("StandardMaterial3D_glass")
 mesh = SubResource("BoxMesh_window_front")
 
@@ -113,19 +113,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.18, 2.08)
 material_override = SubResource("StandardMaterial3D_trim")
 mesh = SubResource("BoxMesh_bumper")
 
-[node name="front_left_wheel_steer" type="Node3D" parent="."]
-position = Vector3(-1.16, -0.3, -1.25)
+[node name="front_left_wheel_steer" type="Node3D" parent="." unique_id=1062338810]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16, -0.3, -1.25)
 
 [node name="wheel_front_left" type="MeshInstance3D" parent="front_left_wheel_steer" unique_id=1660737582]
-rotation_degrees = Vector3(0, 0, 90)
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_tire")
 mesh = SubResource("CylinderMesh_wheel")
 
-[node name="front_right_wheel_steer" type="Node3D" parent="."]
-position = Vector3(1.16, -0.3, -1.25)
+[node name="front_right_wheel_steer" type="Node3D" parent="." unique_id=2131593468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16, -0.3, -1.25)
 
 [node name="wheel_front_right" type="MeshInstance3D" parent="front_right_wheel_steer" unique_id=758660757]
-rotation_degrees = Vector3(0, 0, 90)
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_tire")
 mesh = SubResource("CylinderMesh_wheel")
 

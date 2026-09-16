@@ -6,15 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://bmfxolfhfqwys" path="res://models/trees/generic_tree_v1.tscn" id="4_tree1"]
 [ext_resource type="PackedScene" path="res://models/trees/generic_tree_v2.tscn" id="5_tree2"]
 [ext_resource type="Script" uid="uid://cicku0q3c1tpr" path="res://scripts/levels/car_killer_arena.gd" id="6_arena"]
+[ext_resource type="Texture2D" uid="uid://bvpyi1m8p52ap" path="res://textures/UI/skybox/skybox-dawn-374-panorama.png" id="7_skybox"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ground"]
-size = Vector2(140, 100)
+size = Vector2(140, 150)
 
 [sub_resource type="StandardMaterial3D" id="Material_ground"]
 albedo_color = Color(0.075, 0.13, 0.095, 1)
 
 [sub_resource type="BoxShape3D" id="Shape_ground"]
-size = Vector3(140, 0.4, 100)
+size = Vector3(140, 0.4, 150)
 
 [sub_resource type="CylinderMesh" id="Mesh_dirt"]
 top_radius = 1.0
@@ -26,7 +27,7 @@ radial_segments = 10
 albedo_color = Color(0.16, 0.11, 0.075, 1)
 
 [sub_resource type="BoxMesh" id="Mesh_forest_floor"]
-size = Vector3(52, 0.12, 36)
+size = Vector3(52, 0.12, 51.08789)
 
 [sub_resource type="StandardMaterial3D" id="Material_forest_floor"]
 albedo_color = Color(0.035, 0.09, 0.055, 1)
@@ -34,30 +35,30 @@ albedo_color = Color(0.035, 0.09, 0.055, 1)
 [sub_resource type="BoxShape3D" id="Shape_finish"]
 size = Vector3(20, 4, 12)
 
-[sub_resource type="StandardMaterial3D" id="Material_finish"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0.25, 0.8, 0.45, 0.08)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_skybox"]
+panorama = ExtResource("7_skybox")
+
+[sub_resource type="Sky" id="Sky_skybox"]
+sky_material = SubResource("PanoramaSkyMaterial_skybox")
 
 [sub_resource type="Environment" id="Environment_night"]
-background_mode = 1
-background_color = Color(0.008, 0.018, 0.045, 1)
-ambient_light_source = 3
-ambient_light_color = Color(0.08, 0.12, 0.22, 1)
-ambient_light_energy = 0.2
+background_mode = 2
+background_color = Color(0.02, 0.03, 0.06, 1)
+sky = SubResource("Sky_skybox")
+ambient_light_source = 2
+ambient_light_color = Color(0.18, 0.22, 0.32, 1)
+ambient_light_energy = 0.7
 reflected_light_source = 2
 ssao_enabled = true
 ssao_radius = 2.0
-ssao_intensity = 1.2
-fog_enabled = true
-fog_light_color = Color(0.035, 0.06, 0.11, 1)
-fog_light_energy = 0.24
-fog_density = 0.012
+ssao_intensity = 0.7
+fog_light_color = Color(0.03, 0.05, 0.08, 1)
+fog_light_energy = 0.2
 fog_height = 2.0
 fog_height_density = 0.04
 
 [sub_resource type="BoxShape3D" id="Shape_boundary_x"]
-size = Vector3(1.5, 5, 100)
+size = Vector3(1.5, 5, 149.2662)
 
 [sub_resource type="BoxShape3D" id="Shape_boundary_z"]
 size = Vector3(140, 5, 1.5)
@@ -75,6 +76,7 @@ surface_material_override/0 = SubResource("Material_ground")
 
 [node name="ground_collision" type="CollisionShape3D" parent="environment/terrain" unique_id=239735276]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+visible = false
 shape = SubResource("Shape_ground")
 
 [node name="dirt_patch_01" type="MeshInstance3D" parent="environment/terrain" unique_id=601795133]
@@ -98,7 +100,7 @@ mesh = SubResource("Mesh_dirt")
 surface_material_override/0 = SubResource("Material_dirt")
 
 [node name="forest_floor" type="MeshInstance3D" parent="environment" unique_id=472736390]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, -40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, -47.543945)
 mesh = SubResource("Mesh_forest_floor")
 surface_material_override/0 = SubResource("Material_forest_floor")
 
@@ -149,51 +151,37 @@ transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -34, 0, -34)
 [node name="tree_10" parent="environment/forest" unique_id=2020881281 instance=ExtResource("5_tree2")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 34, 0, -34)
 
-[node name="tree_16" parent="environment/forest" instance=ExtResource("4_tree1")]
-position = Vector3(-42, 0, -30)
-scale = Vector3(0.85, 0.85, 0.85)
+[node name="tree_16" parent="environment/forest" unique_id=1008057952 instance=ExtResource("4_tree1")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -42, 0, -30)
 
-[node name="tree_17" parent="environment/forest" instance=ExtResource("5_tree2")]
-position = Vector3(42, 0, -30)
-scale = Vector3(0.85, 0.85, 0.85)
+[node name="tree_17" parent="environment/forest" unique_id=51356458 instance=ExtResource("5_tree2")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 42, 0, -30)
 
-[node name="tree_18" parent="environment/forest" instance=ExtResource("4_tree1")]
-position = Vector3(-43, 0, -40)
+[node name="tree_18" parent="environment/forest" unique_id=1965771432 instance=ExtResource("4_tree1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, -40)
 
-[node name="tree_19" parent="environment/forest" instance=ExtResource("5_tree2")]
-position = Vector3(43, 0, -40)
+[node name="tree_19" parent="environment/forest" unique_id=1556134127 instance=ExtResource("5_tree2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43, 0, -40)
 
-[node name="tree_20" parent="environment/forest" instance=ExtResource("4_tree1")]
-position = Vector3(-38, 0, -49)
-scale = Vector3(1.1, 1.1, 1.1)
+[node name="tree_20" parent="environment/forest" unique_id=679220504 instance=ExtResource("4_tree1")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -38, 0, -49)
 
-[node name="tree_21" parent="environment/forest" instance=ExtResource("5_tree2")]
-position = Vector3(38, 0, -49)
-scale = Vector3(1.1, 1.1, 1.1)
+[node name="tree_21" parent="environment/forest" unique_id=163913733 instance=ExtResource("5_tree2")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 38, 0, -49)
 
-[node name="tree_22" parent="environment/forest" instance=ExtResource("4_tree1")]
-position = Vector3(-4, 0, -51)
-scale = Vector3(0.85, 0.85, 0.85)
+[node name="tree_22" parent="environment/forest" unique_id=1298805202 instance=ExtResource("4_tree1")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, -4, 0, -51)
 
-[node name="tree_23" parent="environment/forest" instance=ExtResource("5_tree2")]
-position = Vector3(4, 0, -51)
-scale = Vector3(0.85, 0.85, 0.85)
+[node name="tree_23" parent="environment/forest" unique_id=1114970235 instance=ExtResource("5_tree2")]
+transform = Transform3D(0.85, 0, 0, 0, 0.85, 0, 0, 0, 0.85, 4, 0, -51)
 
-[node name="tree_24" parent="environment/forest" instance=ExtResource("4_tree1")]
-position = Vector3(-52, 0, -36)
-scale = Vector3(0.8, 0.8, 0.8)
+[node name="tree_24" parent="environment/forest" unique_id=55364919 instance=ExtResource("4_tree1")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -52, 0, -36)
 
-[node name="tree_25" parent="environment/forest" instance=ExtResource("5_tree2")]
-position = Vector3(52, 0, -36)
-scale = Vector3(0.8, 0.8, 0.8)
+[node name="tree_25" parent="environment/forest" unique_id=1272568230 instance=ExtResource("5_tree2")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 52, 0, -36)
 
 [node name="gameplay" type="Node3D" parent="." unique_id=709915655]
-
-[node name="player_spawn" type="Marker3D" parent="gameplay" unique_id=329686713]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 32)
-
-[node name="killer_car_spawn" type="Marker3D" parent="gameplay" unique_id=192096688]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.6, 43)
 
 [node name="finish_zone" type="Area3D" parent="gameplay" unique_id=978265343]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -42)
@@ -214,12 +202,6 @@ light_color = Color(0.42, 0.55, 0.9, 1)
 light_energy = 0.16
 shadow_enabled = true
 
-[node name="start_lantern" type="OmniLight3D" parent="lighting" unique_id=481122619]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 29)
-light_color = Color(1, 0.45, 0.16, 1)
-light_energy = 0.45
-omni_range = 7.0
-
 [node name="forest_glow" type="OmniLight3D" parent="lighting" unique_id=366929685]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -33)
 light_color = Color(0.15, 0.7, 0.35, 1)
@@ -229,7 +211,7 @@ omni_range = 10.0
 [node name="map_bounds" type="StaticBody3D" parent="." unique_id=582092162]
 
 [node name="west_boundary" type="CollisionShape3D" parent="map_bounds" unique_id=1624419176]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 2.5, 0.32450867)
 shape = SubResource("Shape_boundary_x")
 
 [node name="east_boundary" type="CollisionShape3D" parent="map_bounds" unique_id=620720659]
@@ -237,18 +219,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 2.5, 0)
 shape = SubResource("Shape_boundary_x")
 
 [node name="north_boundary" type="CollisionShape3D" parent="map_bounds" unique_id=1345009554]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 50)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 72.517426)
 shape = SubResource("Shape_boundary_z")
 
 [node name="south_boundary" type="CollisionShape3D" parent="map_bounds" unique_id=2096819290]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -50)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -68.71718)
 shape = SubResource("Shape_boundary_z")
 
 [node name="player" parent="." unique_id=1923519203 instance=ExtResource("2_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 32)
 
 [node name="killer_car" parent="." unique_id=1660832965 instance=ExtResource("3_car")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.6, 43)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.6, 62.73348)
 
 [node name="hud" type="CanvasLayer" parent="." unique_id=280398237]
 
@@ -286,7 +268,7 @@ show_percentage = false
 layout_mode = 2
 text = "SHELLS: 2 / 2"
 
-[node name="victory_panel" type="PanelContainer" parent="hud"]
+[node name="victory_panel" type="PanelContainer" parent="hud" unique_id=1582761368]
 process_mode = 3
 visible = false
 anchors_preset = 8
@@ -301,29 +283,29 @@ offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="victory_content" type="VBoxContainer" parent="hud/victory_panel"]
+[node name="victory_content" type="VBoxContainer" parent="hud/victory_panel" unique_id=1537686750]
 layout_mode = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="title_label" type="Label" parent="hud/victory_panel/victory_content"]
+[node name="title_label" type="Label" parent="hud/victory_panel/victory_content" unique_id=288957325]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "YOU ESCAPED"
 horizontal_alignment = 1
 
-[node name="time_label" type="Label" parent="hud/victory_panel/victory_content"]
+[node name="time_label" type="Label" parent="hud/victory_panel/victory_content" unique_id=701009388]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "TIME: 0.00 s"
 horizontal_alignment = 1
 
-[node name="restart_btn" type="Button" parent="hud/victory_panel/victory_content"]
+[node name="restart_btn" type="Button" parent="hud/victory_panel/victory_content" unique_id=296180282]
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 text = "Restart"
 
-[node name="menu_btn" type="Button" parent="hud/victory_panel/victory_content"]
+[node name="menu_btn" type="Button" parent="hud/victory_panel/victory_content" unique_id=647322541]
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 text = "Exit to menu"

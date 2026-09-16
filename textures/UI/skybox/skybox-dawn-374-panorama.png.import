@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c47mu1gl7hcfk"
-path.s3tc="res://.godot/imported/skybox-dawn-374-px.png-f86c0ce015977c7a362e5711592d57df.s3tc.ctex"
+uid="uid://bvpyi1m8p52ap"
+path.s3tc="res://.godot/imported/skybox-dawn-374-panorama.png-c93310e16e09f4200b6ae8834ab7c5b6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/UI/skybox/skybox-dawn-374-px.png"
-dest_files=["res://.godot/imported/skybox-dawn-374-px.png-f86c0ce015977c7a362e5711592d57df.s3tc.ctex"]
+source_file="res://textures/UI/skybox/skybox-dawn-374-panorama.png"
+dest_files=["res://.godot/imported/skybox-dawn-374-panorama.png-c93310e16e09f4200b6ae8834ab7c5b6.s3tc.ctex"]
 
 [params]
 

@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dh4q7jsj4o6y6"]
+[gd_scene format=3 uid="uid://dh4q7jsj4o6y6"]
 
 [ext_resource type="Script" uid="uid://djqcakdrjwmho" path="res://scripts/enemies/killer_car.gd" id="1_killer_car"]
-[ext_resource type="Script" path="res://scripts/enemies/killer_car_movement.gd" id="2_movement"]
-[ext_resource type="Script" path="res://scripts/enemies/killer_car_hit_reaction.gd" id="3_hit_reaction"]
-[ext_resource type="Script" path="res://scripts/enemies/killer_car_contact_damage.gd" id="4_contact_damage"]
-[ext_resource type="PackedScene" path="res://models/enemies/killer_car_model.tscn" id="5_killer_car_model"]
+[ext_resource type="Script" uid="uid://5a4bpmh787ms" path="res://scripts/enemies/killer_car_movement.gd" id="2_movement"]
+[ext_resource type="Script" uid="uid://cef1weec4ingm" path="res://scripts/enemies/killer_car_hit_reaction.gd" id="3_hit_reaction"]
+[ext_resource type="Script" uid="uid://csppdxhvp84j7" path="res://scripts/enemies/killer_car_contact_damage.gd" id="4_contact_damage"]
+[ext_resource type="PackedScene" uid="uid://baxev2qfjnkxu" path="res://models/enemies/killer_car_model.tscn" id="5_killer_car_model"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_killer_car"]
 size = Vector3(2.4, 1.2, 4.2)
@@ -15,42 +15,47 @@ radius = 2.8
 [node name="killer_car" type="CharacterBody3D" unique_id=701934065]
 script = ExtResource("1_killer_car")
 
-[node name="movement" type="Node" parent="."]
+[node name="movement" type="Node" parent="." unique_id=1259138907]
 script = ExtResource("2_movement")
 
-[node name="hit_reaction" type="Node" parent="."]
+[node name="hit_reaction" type="Node" parent="." unique_id=1140842647]
 script = ExtResource("3_hit_reaction")
 
-[node name="contact_damage" type="Node" parent="."]
+[node name="contact_damage" type="Node" parent="." unique_id=1037074976]
 script = ExtResource("4_contact_damage")
 
-[node name="killer_car_model" parent="." instance=ExtResource("5_killer_car_model")]
+[node name="killer_car_model" parent="." unique_id=593925593 instance=ExtResource("5_killer_car_model")]
 
-[node name="left_headlight" type="SpotLight3D" parent="."]
-position = Vector3(-0.72, 0.48, -2.0)
+[node name="left_headlight" type="SpotLight3D" parent="." unique_id=1350314545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.72, 0.48, -2)
 light_color = Color(1, 0.91, 0.75, 1)
 light_energy = 5.5
+light_volumetric_fog_energy = 0.3
 shadow_enabled = true
 spot_range = 24.0
 spot_angle = 30.0
 spot_angle_attenuation = 1.5
-light_volumetric_fog_energy = 0.3
 
-[node name="right_headlight" type="SpotLight3D" parent="."]
-position = Vector3(0.72, 0.48, -2.0)
+[node name="right_headlight" type="SpotLight3D" parent="." unique_id=1368719137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.72, 0.48, -2)
 light_color = Color(1, 0.91, 0.75, 1)
 light_energy = 5.5
+light_volumetric_fog_energy = 0.3
 shadow_enabled = true
 spot_range = 24.0
 spot_angle = 30.0
 spot_angle_attenuation = 1.5
-light_volumetric_fog_energy = 0.3
 
 [node name="collision_shape_3d" type="CollisionShape3D" parent="." unique_id=628766420]
 shape = SubResource("BoxShape3D_killer_car")
 
 [node name="damage_area" type="Area3D" parent="." unique_id=1363692755]
-collision_layer = 0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045426846, 0)
+collision_layer = 1
+collision_mask = 1
+monitoring = true
+monitorable = true
 
 [node name="collision_shape_3d" type="CollisionShape3D" parent="damage_area" unique_id=312313780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32855237, 0)
 shape = SubResource("SphereShape3D_damage_area")

@@ -30,6 +30,12 @@ func _on_damage_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		player_contacts[body] = player_contacts.get(body, 0) + 1
 		damage_timer = 0.0
+		var car := get_parent() as Node3D
+		if car != null and car.has_method("apply_shot_slow"):
+			car.apply_shot_slow()
+		if car != null and car.has_method("apply_shot_impact"):
+			var impact_direction := (car.global_position - body.global_position).normalized()
+			car.apply_shot_impact(impact_direction)
 
 func _on_damage_area_body_exited(body: Node3D) -> void:
 	if body.is_in_group("player"):
