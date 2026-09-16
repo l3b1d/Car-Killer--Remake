@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dj7wpp5rghx6u"]
+[gd_scene load_steps=9 format=3 uid="uid://dj7wpp5rghx6u"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_pq8u0"]
 [ext_resource type="Script" path="res://scripts/player/player_health.gd" id="2_health"]
 [ext_resource type="Script" path="res://scripts/player/player_stamina.gd" id="3_stamina"]
 [ext_resource type="Script" path="res://scripts/player/player_movement.gd" id="4_movement"]
 [ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="5_camera"]
+[ext_resource type="PackedScene" path="res://scenes/player/shotgun.tscn" id="6_shotgun"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6m7n3"]
 radius = 0.35
@@ -50,3 +51,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 [node name="Camera3D" type="Camera3D" parent="CameraPivot"]
 current = true
 fov = 85.0
+
+[node name="Shotgun" parent="CameraPivot" instance=ExtResource("6_shotgun")]

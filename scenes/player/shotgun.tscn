@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/player/shotgun.gd" id="1_shotgun"]
+[ext_resource type="PackedScene" path="res://models/weapons/shotgun_model.tscn" id="2_shotgun_model"]
+[ext_resource type="PackedScene" path="res://scenes/player/shotgun_projectile.tscn" id="3_projectile"]
+
+[node name="Shotgun" type="Node3D"]
+script = ExtResource("1_shotgun")
+model_scene = ExtResource("2_shotgun_model")
+projectile_scene = ExtResource("3_projectile")
+
+[node name="Muzzle" type="Node3D" parent="."]
+position = Vector3(0.42, -0.32, -1.08)

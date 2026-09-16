@@ -67,7 +67,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.155798, 0.6, -20)
 offset_left = 24.0
 offset_top = 24.0
 offset_right = 284.0
-offset_bottom = 154.0
+offset_bottom = 190.0
 
 [node name="Stats" type="VBoxContainer" parent="HUD/StatsPanel"]
 theme_override_constants/separation = 6
@@ -89,6 +89,9 @@ custom_minimum_size = Vector2(0, 18)
 max_value = 100.0
 value = 100.0
 show_percentage = false
+
+[node name="AmmoLabel" type="Label" parent="HUD/StatsPanel/Stats"]
+text = "SHELLS: 2 / 2"
 
 [node name="GenericTreeV1" parent="." instance=ExtResource("4_generic_tree")]
 position = Vector3(-8, 0, -12)

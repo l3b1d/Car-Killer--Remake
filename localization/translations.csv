@@ -18,3 +18,7 @@ Game paused,Game paused,Гра призупинена
 Resume,Resume,Продовжити
 Main Menu,Main Menu,Головне меню
 Quit Game,Quit Game,Вийти з гри
+HP status,HP: %d / %d,ЗДОРОВ'Я: %d / %d
+Stamina status,STAMINA: %d / %d,ВИТРИВАЛІСТЬ: %d / %d
+Shells status,SHELLS: %d / %d,ПАТРОНИ: %d / %d
+Reloading,RELOADING...,ПЕРЕЗАРЯДЖЕННЯ...

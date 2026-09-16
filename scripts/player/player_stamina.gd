@@ -4,8 +4,8 @@ signal changed(stamina: float, max_stamina: float)
 
 @export var max_stamina := 100.0
 @export var drain_rate := 20.0
-@export var regen_delay := 1.0
-@export var regen_rate := 15.0
+@export var regen_delay := 2.5
+@export var regen_rate := 10.0
 
 var stamina := 0.0
 var regen_timer := 0.0

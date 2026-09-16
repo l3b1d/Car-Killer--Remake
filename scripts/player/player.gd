@@ -46,15 +46,22 @@ func _setup_default_input() -> void:
 		"player_move_backward": [KEY_S, KEY_DOWN],
 		"player_move_left": [KEY_A, KEY_LEFT],
 		"player_move_right": [KEY_D, KEY_RIGHT],
-		"run": [KEY_SHIFT]
+		"run": [KEY_SHIFT],
+		"shoot": [MOUSE_BUTTON_LEFT],
+		"reload": [KEY_R]
 	}
 
 	for action_name in actions:
 		if not InputMap.has_action(action_name):
 			InputMap.add_action(action_name)
-		for keycode in actions[action_name]:
-			var event := InputEventKey.new()
-			event.physical_keycode = keycode
-			event.keycode = keycode
+		for input_code in actions[action_name]:
+			var event: InputEvent
+			if action_name == "shoot":
+				event = InputEventMouseButton.new()
+				event.button_index = input_code
+			else:
+				event = InputEventKey.new()
+				event.physical_keycode = input_code
+				event.keycode = input_code
 			if not InputMap.action_has_event(action_name, event):
 				InputMap.action_add_event(action_name, event)
