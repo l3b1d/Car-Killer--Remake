@@ -17,9 +17,14 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=60
 config/icon="res://textures/icon.svg"
 
+[audio]
+
+default_bus_layout="res://default_bus_layout.tres"
+
 [autoload]
 
 SettingsManager="*res://scripts/ui/settings/settings_manager.gd"
+MusicManager="*res://scripts/audio/music_manager.gd"
 
 [display]
 

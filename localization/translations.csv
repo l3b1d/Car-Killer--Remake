@@ -6,6 +6,9 @@ Display mode,Display mode,Режим екрана
 Windowed,Windowed,У вікні
 Fullscreen,Fullscreen,На весь екран
 Language,Language,Мова
+Master volume,Master volume,Загальна гучність
+Music volume,Music volume,Гучність музики
+SFX volume,SFX volume,Гучність SFX
 English,English,Англійська
 Ukrainian,Ukrainian,Українська
 Save & Exit,Save & Exit,Зберегти й вийти

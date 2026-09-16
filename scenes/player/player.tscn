@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dj7wpp5rghx6u"]
+[gd_scene load_steps=10 format=3 uid="uid://dj7wpp5rghx6u"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_pq8u0"]
 [ext_resource type="Script" path="res://scripts/player/player_health.gd" id="2_health"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/player/player_movement.gd" id="4_movement"]
 [ext_resource type="Script" path="res://scripts/player/player_camera.gd" id="5_camera"]
 [ext_resource type="PackedScene" path="res://scenes/player/shotgun.tscn" id="6_shotgun"]
+[ext_resource type="AudioStream" path="res://audio/sfx/footsteps/sfx_step_grass_l.ogg" id="7_footstep"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6m7n3"]
 radius = 0.35
@@ -34,6 +35,10 @@ script = ExtResource("3_stamina")
 
 [node name="movement" type="Node" parent="."]
 script = ExtResource("4_movement")
+
+[node name="footsteps" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_footstep")
+bus = &"SFX"
 
 [node name="camera" type="Node" parent="."]
 script = ExtResource("5_camera")

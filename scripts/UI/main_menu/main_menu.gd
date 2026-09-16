@@ -11,6 +11,7 @@ func _ready() -> void:
 	$main_menu_back/main_text.text = tr("CAR KILLER: REMASTERED")
 
 func _on_start_btn_pressed() -> void:
+	get_node("/root/MusicManager").call("stop_music")
 	_open_loading_screen()
 
 func _open_loading_screen() -> void:

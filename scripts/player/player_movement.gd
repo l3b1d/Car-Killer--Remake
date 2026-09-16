@@ -7,6 +7,9 @@ extends Node
 
 @onready var player: CharacterBody3D = get_parent()
 @onready var stamina: Node = get_node("../stamina")
+@onready var footsteps: AudioStreamPlayer = get_node("../footsteps")
+
+var footstep_timer := 0.0
 
 func physics_process(delta: float) -> void:
 	if not player.is_on_floor():
@@ -36,3 +39,15 @@ func physics_process(delta: float) -> void:
 		player.velocity.z = move_toward(player.velocity.z, 0.0, current_speed)
 
 	player.move_and_slide()
+	var is_moving := Vector2(player.velocity.x, player.velocity.z).length() > 0.1
+	_update_footsteps(delta, is_moving, is_sprinting)
+
+func _update_footsteps(delta: float, is_moving: bool, is_sprinting: bool) -> void:
+	if not player.is_on_floor() or not is_moving:
+		footstep_timer = 0.0
+		return
+
+	footstep_timer -= delta
+	if footstep_timer <= 0.0:
+		footsteps.play()
+		footstep_timer = 0.34 if is_sprinting else 0.52
