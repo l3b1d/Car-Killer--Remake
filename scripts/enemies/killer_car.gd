@@ -2,9 +2,6 @@ extends CharacterBody3D
 
 @onready var hit_reaction_component: Node = $HitReaction
 
-func _ready() -> void:
-	pass
-
 func _physics_process(delta: float) -> void:
 	$Movement.physics_process(delta)
 	$ContactDamage.physics_process(delta)

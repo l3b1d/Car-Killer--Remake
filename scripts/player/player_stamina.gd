@@ -17,6 +17,7 @@ func can_sprint() -> bool:
 	return stamina > 0.0
 
 func update_stamina(delta: float, is_sprinting: bool) -> void:
+	var previous_stamina := stamina
 	if is_sprinting:
 		stamina = maxf(stamina - drain_rate * delta, 0.0)
 		regen_timer = regen_delay
@@ -25,4 +26,5 @@ func update_stamina(delta: float, is_sprinting: bool) -> void:
 	else:
 		stamina = minf(stamina + regen_rate * delta, max_stamina)
 
-	changed.emit(stamina, max_stamina)
+	if not is_equal_approx(previous_stamina, stamina):
+		changed.emit(stamina, max_stamina)

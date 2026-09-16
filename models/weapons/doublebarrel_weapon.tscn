@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://models/weapons/DoubleBArrel.gltf" id="1_model"]
+
+[node name="DoubleBarrelWeapon" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.47, -0.9)
+
+[node name="DoubleBarrel" parent="." instance=ExtResource("1_model")]

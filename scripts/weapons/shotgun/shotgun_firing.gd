@@ -1,7 +1,7 @@
 extends Node
 
 @export var cooldown := 0.8
-@export var range := 80.0
+@export var shot_range := 80.0
 
 var cooldown_timer := 0.0
 
@@ -17,13 +17,13 @@ func can_fire() -> bool:
 	return cooldown_timer <= 0.0 and not ammo.reloading and ammo.ammo > 0
 
 func fire(projectile_scene: PackedScene) -> void:
-	if not can_fire() or not ammo.consume_shell():
+	if projectile_scene == null or not can_fire() or not ammo.consume_shell():
 		return
 
 	cooldown_timer = cooldown
 	var viewport_center := get_viewport().get_visible_rect().size * 0.5
 	var ray_origin := camera.project_ray_origin(viewport_center)
-	var ray_end := ray_origin + camera.project_ray_normal(viewport_center) * range
+	var ray_end := ray_origin + camera.project_ray_normal(viewport_center) * shot_range
 	var query := PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
 	query.exclude = [shotgun.get_parent().get_parent()]
 	var hit := shotgun.get_world_3d().direct_space_state.intersect_ray(query)

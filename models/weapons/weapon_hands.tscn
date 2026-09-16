@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dp58hsu4iyt3a"]
+
+[ext_resource type="PackedScene" uid="uid://kd2f80ndg70x" path="res://models/weapons/Hands.gltf" id="1_hands"]
+
+[node name="WeaponHands" type="Node3D" unique_id=2043930689]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -0.05, -0.02, 0.73)
+
+[node name="Hands" parent="." unique_id=1206267639 instance=ExtResource("1_hands")]

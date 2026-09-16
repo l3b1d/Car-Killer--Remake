@@ -22,12 +22,26 @@ var reloading: bool:
 		return ammo_component.reloading
 
 func _ready() -> void:
+	var view_model: Node3D
 	if model_scene != null:
-		add_child(model_scene.instantiate())
+		view_model = model_scene.instantiate()
+		add_child(view_model)
+		_disable_shadows(view_model)
 	if hands_scene != null:
-		add_child(hands_scene.instantiate())
+		var hands := hands_scene.instantiate()
+		if view_model != null:
+			view_model.add_child(hands)
+		else:
+			add_child(hands)
+		_disable_shadows(hands)
 	ammo_component.changed.connect(_on_ammo_changed)
 	_emit_ammo_changed()
+
+func _disable_shadows(node: Node) -> void:
+	for child in node.get_children():
+		if child is GeometryInstance3D:
+			child.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+		_disable_shadows(child)
 
 func _process(delta: float) -> void:
 	ammo_component.process_reload(delta)
