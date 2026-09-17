@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://baxev2qfjnkxu" path="res://models/enemies/killer_car_model.tscn" id="5_killer_car_model"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_killer_car"]
-size = Vector3(2.4, 1.2, 4.2)
+size = Vector3(2.4, 1.7292236, 4.2917237)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_damage_area"]
-radius = 2.8
+[sub_resource type="BoxShape3D" id="BoxShape3D_7wext"]
+size = Vector3(2.3848877, 1.729187, 4.352783)
 
 [node name="killer_car" type="CharacterBody3D" unique_id=701934065]
 script = ExtResource("1_killer_car")
@@ -47,15 +47,12 @@ spot_angle = 30.0
 spot_angle_attenuation = 1.5
 
 [node name="collision_shape_3d" type="CollisionShape3D" parent="." unique_id=628766420]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29166263, 0.2056272)
 shape = SubResource("BoxShape3D_killer_car")
 
 [node name="damage_area" type="Area3D" parent="." unique_id=1363692755]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.045426846, 0)
-collision_layer = 1
-collision_mask = 1
-monitoring = true
-monitorable = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31301582, 0)
 
 [node name="collision_shape_3d" type="CollisionShape3D" parent="damage_area" unique_id=312313780]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32855237, 0)
-shape = SubResource("SphereShape3D_damage_area")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0033569336, -0.032806277, 0.21105957)
+shape = SubResource("BoxShape3D_7wext")
